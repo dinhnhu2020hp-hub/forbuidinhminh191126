@@ -599,15 +599,7 @@
       position: relative;
       background-color: var(--kraft-letter);
       background-image:
-        radial-gradient(circle at 20% 15%, rgba(255, 250, 238, 0.45), transparent 55%),
-        repeating-linear-gradient(
-          to bottom,
-          transparent 0px,
-          transparent 35px,
-          rgba(104, 78, 52, 0.24) 35px,
-          rgba(104, 78, 52, 0.24) 36px
-        );
-      background-position: 0 28px;
+        radial-gradient(circle at 20% 15%, rgba(255, 250, 238, 0.45), transparent 55%);
       padding: 40px clamp(20px, 5vw, 52px) 44px;
       border-radius: 3px;
       overflow: hidden;
@@ -664,9 +656,21 @@
       font-size: clamp(1.08rem, 2.5vw, 1.28rem);
       line-height: 36px; /* Khớp chính xác khoảng cách dòng kẻ 36px */
       color: #382A1E;
+      /* Dòng kẻ vẽ ngay trên vùng chữ nên luôn khớp với chữ trên mọi màn hình */
+      background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 35px,
+        rgba(104, 78, 52, 0.24) 35px,
+        rgba(104, 78, 52, 0.24) 36px
+      );
+      background-size: 100% 36px;
+      background-repeat: repeat-y;
       position: relative;
       z-index: 2;
       overflow-wrap: break-word;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
     }
 
     .letter-body .para {
