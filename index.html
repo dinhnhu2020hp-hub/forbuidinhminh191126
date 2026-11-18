@@ -197,6 +197,7 @@
       position: relative;
       width: min(500px, 92vw);
       aspect-ratio: 1.52 / 1;
+      display: flex;
       padding: 11px;
       border-radius: 6px;
       background: repeating-linear-gradient(
@@ -222,8 +223,8 @@
 
     .envelope-inner {
       position: relative;
+      flex: 1;
       width: 100%;
-      height: 100%;
       background:
         radial-gradient(circle at 30% 25%, rgba(255, 249, 236, 0.45), transparent 55%),
         radial-gradient(circle at 75% 78%, rgba(164, 134, 96, 0.18), transparent 50%),
@@ -322,11 +323,20 @@
     }
 
     /* DẤU SÁP NIÊM PHONG TƯƠNG TÁC (NHẤN GIỮ 2 GIÂY) */
+    .env-middle {
+      position: relative;
+      z-index: 6;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 96px;
+      padding: 4px 0;
+    }
+
     .wax-seal-zone {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      position: relative;
+      flex-shrink: 0;
       z-index: 6;
       width: 96px;
       height: 96px;
@@ -918,6 +928,15 @@
       gap: 10px;
     }
 
+    @media (max-width: 520px) {
+      .envelope-wrap { aspect-ratio: 1.12 / 1; }
+      .envelope-inner { padding: 14px 14px; }
+      .airmail-stamp { width: 48px; height: 48px; }
+      .postal-boxes span { width: 14px; height: 18px; }
+      .env-address { width: 68%; }
+      .env-line { font-size: 0.88rem; }
+    }
+
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(18px); }
       to { opacity: 1; transform: translateY(0); }
@@ -970,6 +989,7 @@
             </div>
           </div>
 
+          <div class="env-middle">
           <!-- Dấu sáp niêm phong nung chảy (nhấn giữ 2 giây) -->
           <div class="wax-seal-zone" id="wax-seal-zone" role="button" tabindex="0" aria-label="Nhấn giữ 2 giây để nung chảy dấu sáp">
             <svg class="wax-progress-svg" viewBox="0 0 96 96">
@@ -993,6 +1013,7 @@
                 </g>
               </svg>
             </div>
+          </div>
           </div>
 
           <div class="env-bottom">
